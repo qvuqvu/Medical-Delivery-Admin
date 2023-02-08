@@ -14,14 +14,14 @@ const ImageHover = ({
 }) => {
   //get file when onchange image file data
   const [file, setFile] = useState(null);
-  const [currentArrImg, setCurrentArrImg] = useState(inputValue.arrImg);
+  const [currentArrImg, setCurrentArrImg] = useState(inputValue.image);
 
   //set currentArrImg to render with inital values is image from firestore
   useEffect(() => {
-    if (inputValue.arrImg) {
-      setCurrentArrImg(inputValue.arrImg);
+    if (inputValue.image) {
+      setCurrentArrImg(inputValue.image);
     }
-  }, [inputValue.arrImg]);
+  }, [inputValue.image]);
   //set Type input required for image
   const imageMimeType = /image\/(png|jpg|jpeg|jfif)/i;
   //if file exist change to fileReader to render UI
