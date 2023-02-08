@@ -64,7 +64,7 @@ const Product = () => {
 
   /* List of filter data */
   const filter = {
-    price: ["All", "0 - 50", "51 - 100", ">100"],
+    price: ["All", "0 - 100,000", "100,0000- 200,000", "> 200,000"],
     remain: ["All", "0 - 20", "21 - 50", "51 - 100", ">100"],
   };
 
@@ -98,21 +98,21 @@ const Product = () => {
         filtedProduct = oldArrFilted;
         break;
       case 1:
-        filtedProduct = oldArrFilted.filter((data) => Number(data.remain) < 20);
+        filtedProduct = oldArrFilted.filter((data) => Number(data.quantity) < 20);
         break;
       case 2:
         filtedProduct = oldArrFilted.filter(
-          (data) => Number(data.remain) <= 50 && Number(data.remain) > 20
+          (data) => Number(data.quantity) <= 50 && Number(data.quantity) > 20
         );
         break;
       case 3:
         filtedProduct = oldArrFilted.filter(
-          (data) => Number(data.remain) <= 100 && Number(data.remain) > 50
+          (data) => Number(data.quantity) <= 100 && Number(data.quantity) > 50
         );
         break;
       case 4:
         filtedProduct = oldArrFilted.filter(
-          (data) => Number(data.remain) > 100
+          (data) => Number(data.quantity) > 100
         );
         break;
       default:
@@ -124,20 +124,20 @@ const Product = () => {
   const handleFilterPrice = (oldArrFilted) => {
     let filtedProduct = [];
 
-    switch (Number(priceRef.current.value.trim())) {
+    switch (Number(priceRef.current.value.split(' ')[0])) {
       case 0:
         filtedProduct = oldArrFilted;
         break;
       case 1:
-        filtedProduct = oldArrFilted.filter((data) => Number(data.price) < 50);
+        filtedProduct = oldArrFilted.filter((data) => Number(data.gia.split(' ')[0]) < 100000);
         break;
       case 2:
         filtedProduct = oldArrFilted.filter(
-          (data) => Number(data.price) <= 100 && Number(data.price) > 50
+          (data) => Number(data.gia) <= 100 && Number(data.gia.split(' ')[0]) > 100000
         );
         break;
       case 3:
-        filtedProduct = oldArrFilted.filter((data) => Number(data.price) > 100);
+        filtedProduct = oldArrFilted.filter((data) => Number(data.gia.split(' ')[0]) > 200000);
         break;
       default:
         break;
@@ -200,7 +200,7 @@ const Product = () => {
               <option value="" disabled hidden>
                 Select your option
               </option>
-              {filter.price?.map((item, index) => {
+              {filter.gia?.split('')[0].map((item, index) => {
                 return (
                   <option value={index} key={item}>
                     {item}
@@ -238,7 +238,6 @@ const Product = () => {
               <th>Price</th>
               <th>Remain Quantity</th>
               <th>Category</th>
-              <th>Import Time</th>
               <th></th>
             </tr>
             {currentArrProducts?.map((product, index) => {
