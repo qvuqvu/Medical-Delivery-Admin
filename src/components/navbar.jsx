@@ -30,9 +30,9 @@ const Navbar = ({ user }) => {
           <Link to="/Report" className="active:text-primary cursor-pointer">
             Report
           </Link>
-          <Link to="/Comment" className="active:text-primary cursor-pointer">
+          {/* <Link to="/Comment" className="active:text-primary cursor-pointer">
             Comment
-          </Link>
+          </Link> */}
         </div>
       </div>
     );
