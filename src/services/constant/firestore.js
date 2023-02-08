@@ -1,6 +1,6 @@
 const CATEGORIES = "categories";
 const USERS = "users";
-const PRODUCTS = "products";
+const PRODUCTS = "Products";
 const TRANSACTIONS = "transactions";
 const COMMENTS = "comments";
 
