@@ -8,14 +8,8 @@ const createNewProduct = async (item) => {
     category: item.category,
     name: item.name,
     quantity: item.quantity,
-    price: item.price,
-    remain: item.remain,
-    description: item.description,
-    width: item.width,
-    height: item.height,
-    depth: item.depth,
-    create_date: serverTimestamp(),
-    update_date: serverTimestamp(),
+    gia: item.gia,
+    mota: item.mota,
   });
   return docRef.id;
 };
