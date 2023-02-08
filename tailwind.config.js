@@ -21,11 +21,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#4e4d93",
-        dark_primary: "#2a254b",
-        light_grey: "#f9f9f9",
-        border_grey: "#ebe8f4",
-        border_dark: "#cac6da",
+        primary: "#88CFF9",
+        dark_primary: "#43B6FB",
+        light_grey: "#88CFF9",
+        border_grey: "#88CFF9",
+        border_dark: "#88CFF9",
         invisible_rgba: "rgba(0, 0, 0, 0.2)",
       },
     },
