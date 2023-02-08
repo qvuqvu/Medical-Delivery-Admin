@@ -13,7 +13,7 @@ import { storage } from "../services/firebase.config";
 const ProductList = ({ product, stt }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  var timeCreate = timeConvert(product?.create_date?.toDate());
+  // var timeCreate = timeConvert(product?.create_date?.toDate());
 
   const handleUpdate = () => {
     navigate(`/Product/Update/${product.uuid}`, { state: product });
@@ -33,10 +33,10 @@ const ProductList = ({ product, stt }) => {
     <tr className="border-b-2">
       <td>{stt}</td>
       <td>{product.name}</td>
-      <td>{product.price} USD</td>
+      <td>{product.gia} VND</td>
       <td>{product.quantity}</td>
       <td>{product.category}</td>
-      <td>{timeCreate}</td>
+      {/* <td>{timeCreate}</td> */}
       <td>
         <div className="border-none flex">
           <div className="cursor-pointer" onClick={() => handleUpdate()}>
