@@ -13,7 +13,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (values.email === "avion" && values.password === "avion") {
+    if (values.email === "medical" && values.password === "medical") {
       dispatch(setUserValue(values));
       navigate("/Dashboard");
     }
