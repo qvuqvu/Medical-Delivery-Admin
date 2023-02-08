@@ -42,11 +42,7 @@ const RUDProduct = () => {
     description: "",
     price: 0,
     quantity: "",
-    width: "",
-    height: "",
-    depth: "",
-    remain: "",
-    arrImg: [],
+    image: [],
   });
   //get data from params and set to input value
   useEffect(() => {
@@ -68,7 +64,7 @@ const RUDProduct = () => {
           arrUrl.push(pictureURL);
           //update firestore
           await dispatch(
-            updateArrImg({ uuid: productCreatedId, arrImg: arrUrl })
+            updateArrImg({ uuid: productCreatedId, image: arrUrl })
           );
         });
       } catch (error) {
@@ -129,14 +125,14 @@ const RUDProduct = () => {
         await deleteObject(oldImgRef)
           .then(async () => {
             //add new image to storage
-            var newArrUrl = [...inputValue.arrImg];
+            var newArrUrl = [...inputValue.image];
             const newImgRef = ref(storage, `products/${Id}/${i}`);
             const snap = await uploadBytes(newImgRef, fileData[i]);
             const pictureURL = await getDownloadURL(
               ref(storage, snap.ref.fullPath)
             );
             newArrUrl[i] = pictureURL;
-            await dispatch(updateArrImg({ uuid: Id, arrImg: newArrUrl }));
+            await dispatch(updateArrImg({ uuid: Id, image: newArrUrl }));
           })
           .catch((error) => console.log(error));
       });
@@ -252,34 +248,12 @@ const RUDProduct = () => {
                 </select>
               </div>
             </div>
-            <div className="flex justify-between">
-              <LabelInput
-                name={"Width"}
-                halfWidth="w-[30%]"
-                value={inputValue?.width}
-                inputValue={inputValue}
-                setInputValue={setInputValue}
-              />
-              <LabelInput
-                name={"Height"}
-                halfWidth="w-[30%]"
-                value={inputValue?.height}
-                inputValue={inputValue}
-                setInputValue={setInputValue}
-              />
-              <LabelInput
-                name={"Depth"}
-                halfWidth="w-[30%]"
-                value={inputValue?.depth}
-                inputValue={inputValue}
-                setInputValue={setInputValue}
-              />
-            </div>
+            
             <LabelInput
               name={"Description"}
               className="py-12 col-span-10 row-span-5 text-start"
               textArea={true}
-              value={inputValue?.description}
+              value={inputValue?.mota}
               inputValue={inputValue}
               setInputValue={setInputValue}
             />
@@ -289,7 +263,7 @@ const RUDProduct = () => {
             <div className="flex-1">
               <LabelInput
                 name={"Price"}
-                value={inputValue?.price}
+                value={inputValue?.gia}
                 inputValue={inputValue}
                 setInputValue={setInputValue}
               />
@@ -297,13 +271,6 @@ const RUDProduct = () => {
                 <LabelInput
                   name={"Quantity"}
                   value={inputValue?.quantity}
-                  halfWidth="w-[49%]"
-                  inputValue={inputValue}
-                  setInputValue={setInputValue}
-                />
-                <LabelInput
-                  name={"Remain"}
-                  value={inputValue?.remain}
                   halfWidth="w-[49%]"
                   inputValue={inputValue}
                   setInputValue={setInputValue}
